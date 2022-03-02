@@ -14,7 +14,10 @@ def run2():
     # txt_input.delete(1.0, END)
     file_dir = inpl2.get(1.0, END).strip('\n')
     if os.path.exists(file_dir.strip('\n')):
-        file = pd.read_csv(file_dir)
+        try:
+            file = pd.read_csv(file_dir)
+        except:
+            file = pd.read_csv(file_dir, encoding='gbk')
     else:
         easygui.msgbox('请输入正确的待分析物质文件路径!')
         return

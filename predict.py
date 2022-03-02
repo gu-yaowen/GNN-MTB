@@ -8,7 +8,10 @@ from dgllife.utils import smiles_to_bigraph, CanonicalAtomFeaturizer, CanonicalB
 
 
 def read_smiles(file_dir: str):
-    df = pd.read_csv(file_dir)
+    try:
+        df = pd.read_csv(file_dir)
+    except:
+        df = pd.read_csv(file_dir, encoding='gbk')
     return df['SMILES'].values
 
 
